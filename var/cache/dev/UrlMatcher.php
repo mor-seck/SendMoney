@@ -8,15 +8,21 @@
 return [
     false, // $matchHost
     [ // $staticRoutes
+        '/api/register' => [[['_route' => 'register', '_controller' => 'App\\Controller\\SecurityController::register'], null, ['POST' => 0], null, false, false, null]],
+        '/api/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\SecurityController::login'], null, ['POST' => 0], null, false, false, null]],
         '/sendmoney' => [[['_route' => 'sendmoney', '_controller' => 'App\\Controller\\SendmoneyController::index'], null, null, null, false, false, null]],
         '/ajout_personne' => [[['_route' => 'ajout_personne', '_controller' => 'App\\Controller\\SendmoneyController::ajout_personne'], null, null, null, false, false, null]],
         '/listerpersonne' => [[['_route' => 'listerpersonne', '_controller' => 'App\\Controller\\SendmoneyController::listerPersonne'], null, ['GET' => 0], null, false, false, null]],
         '/ajout_partenaire' => [[['_route' => 'ajout_partenaire', '_controller' => 'App\\Controller\\SendmoneyController::ajoutpartenaire'], null, null, null, false, false, null]],
         '/listerpartenaire' => [[['_route' => 'listerpartenaire', '_controller' => 'App\\Controller\\SendmoneyController::listerPartenaire'], null, ['GET' => 0], null, false, false, null]],
         '/ajout_compte_bancaire' => [[['_route' => 'ajout_compte_bancaire', '_controller' => 'App\\Controller\\SendmoneyController::ajoutcomptebancaire'], null, null, null, false, false, null]],
+<<<<<<< HEAD
         '/lister_compte_bancaire' => [[['_route' => 'lister_compte_bancaire', '_controller' => 'App\\Controller\\SendmoneyController::lister_compte_bancaire'], null, ['GET' => 0], null, false, false, null]],
         '/ajout_depot' => [[['_route' => 'ajout_depot', '_controller' => 'App\\Controller\\SendmoneyController::ajoutdepot'], null, null, null, false, false, null]],
         '/lister_depot' => [[['_route' => 'lister_depot', '_controller' => 'App\\Controller\\SendmoneyController::lister_depot'], null, ['GET' => 0], null, false, false, null]],
+=======
+        '/api/login_check' => [[['_route' => 'api_login_check'], null, null, null, false, false, null]],
+>>>>>>> 22dc5081b60e403a6b1f21717f59d38d5b45acbe
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -47,15 +53,15 @@ return [
                             .')'
                         .')'
                         .'|p(?'
-                            .'|ersonnes(?'
+                            .'|artenaires(?'
                                 .'|(?:\\.([^/]++))?(?'
-                                    .'|(*:349)'
+                                    .'|(*:351)'
                                 .')'
                                 .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                    .'|(*:387)'
+                                    .'|(*:389)'
                                 .')'
                             .')'
-                            .'|artenaires(?'
+                            .'|ersonnes(?'
                                 .'|(?:\\.([^/]++))?(?'
                                     .'|(*:428)'
                                 .')'
@@ -91,23 +97,23 @@ return [
             [['_route' => 'api_compte_bancaires_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\CompteBancaire', '_api_item_operation_name' => 'delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_compte_bancaires_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\CompteBancaire', '_api_item_operation_name' => 'put'], ['id', '_format'], ['PUT' => 0], null, false, true, null],
         ],
-        349 => [
-            [['_route' => 'api_personnes_get_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Personne', '_api_collection_operation_name' => 'get'], ['_format'], ['GET' => 0], null, false, true, null],
-            [['_route' => 'api_personnes_post_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Personne', '_api_collection_operation_name' => 'post'], ['_format'], ['POST' => 0], null, false, true, null],
-        ],
-        387 => [
-            [['_route' => 'api_personnes_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Personne', '_api_item_operation_name' => 'get'], ['id', '_format'], ['GET' => 0], null, false, true, null],
-            [['_route' => 'api_personnes_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Personne', '_api_item_operation_name' => 'delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
-            [['_route' => 'api_personnes_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Personne', '_api_item_operation_name' => 'put'], ['id', '_format'], ['PUT' => 0], null, false, true, null],
-        ],
-        428 => [
+        351 => [
             [['_route' => 'api_partenaires_get_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Partenaire', '_api_collection_operation_name' => 'get'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_partenaires_post_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Partenaire', '_api_collection_operation_name' => 'post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        466 => [
+        389 => [
             [['_route' => 'api_partenaires_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Partenaire', '_api_item_operation_name' => 'get'], ['id', '_format'], ['GET' => 0], null, false, true, null],
             [['_route' => 'api_partenaires_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Partenaire', '_api_item_operation_name' => 'delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'api_partenaires_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Partenaire', '_api_item_operation_name' => 'put'], ['id', '_format'], ['PUT' => 0], null, false, true, null],
+        ],
+        428 => [
+            [['_route' => 'api_personnes_get_collection', '_controller' => 'api_platform.action.get_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Personne', '_api_collection_operation_name' => 'get'], ['_format'], ['GET' => 0], null, false, true, null],
+            [['_route' => 'api_personnes_post_collection', '_controller' => 'api_platform.action.post_collection', '_format' => null, '_api_resource_class' => 'App\\Entity\\Personne', '_api_collection_operation_name' => 'post'], ['_format'], ['POST' => 0], null, false, true, null],
+        ],
+        466 => [
+            [['_route' => 'api_personnes_get_item', '_controller' => 'api_platform.action.get_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Personne', '_api_item_operation_name' => 'get'], ['id', '_format'], ['GET' => 0], null, false, true, null],
+            [['_route' => 'api_personnes_delete_item', '_controller' => 'api_platform.action.delete_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Personne', '_api_item_operation_name' => 'delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
+            [['_route' => 'api_personnes_put_item', '_controller' => 'api_platform.action.put_item', '_format' => null, '_api_resource_class' => 'App\\Entity\\Personne', '_api_item_operation_name' => 'put'], ['id', '_format'], ['PUT' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],
