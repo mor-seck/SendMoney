@@ -165,6 +165,6 @@ class __TwigTemplate_dec21249598516d2405fa60a1242e65de7f18fdaa343e2c4c4f08fa9b8b
         {%- endfor -%}
     </pre>
 {% endif %}
-", "@Doctrine/Collector/explain.html.twig", "/home/coly/Documents/SendMoney/vendor/doctrine/doctrine-bundle/Resources/views/Collector/explain.html.twig");
+", "@Doctrine/Collector/explain.html.twig", "/var/www/html/SYMFONY4/Mes Projets Symfony/SendMoney/vendor/doctrine/doctrine-bundle/Resources/views/Collector/explain.html.twig");
     }
 }

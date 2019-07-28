@@ -57,6 +57,6 @@ class __TwigTemplate_e3359bf66b2771eaa49d2384ab3ee06872cd802913b40443003591a1660
     public function getSourceContext()
     {
         return new Source("<?php echo \$view['form']->block(\$form, 'form_widget_simple', ['type' => isset(\$type) ? \$type : 'number']) ?>
-", "@Framework/Form/integer_widget.html.php", "/home/coly/Documents/SendMoney/vendor/symfony/framework-bundle/Resources/views/Form/integer_widget.html.php");
+", "@Framework/Form/integer_widget.html.php", "/var/www/html/SYMFONY4/Mes Projets Symfony/SendMoney/vendor/symfony/framework-bundle/Resources/views/Form/integer_widget.html.php");
     }
 }

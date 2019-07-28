@@ -57,6 +57,6 @@ class __TwigTemplate_c5b64942a0b36a66276f085d3846b92ea89191e1c00c9e1645a141b55ab
     public function getSourceContext()
     {
         return new Source("<?php echo \$view['form']->block(\$form, 'button_widget', ['type' => isset(\$type) ? \$type : 'reset']) ?>
-", "@Framework/Form/reset_widget.html.php", "/home/coly/Documents/SendMoney/vendor/symfony/framework-bundle/Resources/views/Form/reset_widget.html.php");
+", "@Framework/Form/reset_widget.html.php", "/var/www/html/SYMFONY4/Mes Projets Symfony/SendMoney/vendor/symfony/framework-bundle/Resources/views/Form/reset_widget.html.php");
     }
 }

@@ -57,6 +57,6 @@ class __TwigTemplate_191b2c08412dcdd60817bad86aacdb16c9549cd5267f4aac2612cee691a
     public function getSourceContext()
     {
         return new Source("<?php echo \$view['form']->block(\$form, 'form_widget_simple', ['type' => isset(\$type) ? \$type : 'hidden']) ?>
-", "@Framework/Form/hidden_widget.html.php", "/home/coly/Documents/SendMoney/vendor/symfony/framework-bundle/Resources/views/Form/hidden_widget.html.php");
+", "@Framework/Form/hidden_widget.html.php", "/var/www/html/SYMFONY4/Mes Projets Symfony/SendMoney/vendor/symfony/framework-bundle/Resources/views/Form/hidden_widget.html.php");
     }
 }

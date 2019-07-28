@@ -89,6 +89,6 @@ class __TwigTemplate_4707753db0a4be747aa63810403e24882a4f7d477dff4e2f96c4293ee8a
             </trace>
 {% endfor %}
         </traces>
-", "@Twig/Exception/traces.xml.twig", "/home/coly/Documents/SendMoney/vendor/symfony/twig-bundle/Resources/views/Exception/traces.xml.twig");
+", "@Twig/Exception/traces.xml.twig", "/var/www/html/SYMFONY4/Mes Projets Symfony/SendMoney/vendor/symfony/twig-bundle/Resources/views/Exception/traces.xml.twig");
     }
 }

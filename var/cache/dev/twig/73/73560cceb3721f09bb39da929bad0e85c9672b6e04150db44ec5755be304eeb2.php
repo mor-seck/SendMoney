@@ -206,6 +206,6 @@ class __TwigTemplate_c39a6f95d36414d4cde19bbd8e4443b4da0c050ffe50a5fec979ea7f7d9
     {% endfor %}
     </tbody>
 </table>
-", "@Twig/Exception/logs.html.twig", "/home/coly/Documents/SendMoney/vendor/symfony/twig-bundle/Resources/views/Exception/logs.html.twig");
+", "@Twig/Exception/logs.html.twig", "/var/www/html/SYMFONY4/Mes Projets Symfony/SendMoney/vendor/symfony/twig-bundle/Resources/views/Exception/logs.html.twig");
     }
 }

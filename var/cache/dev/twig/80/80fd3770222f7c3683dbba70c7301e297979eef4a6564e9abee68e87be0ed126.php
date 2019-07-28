@@ -73,6 +73,6 @@ class __TwigTemplate_744b8b0db552514fade04a66158356daccffcbb700ea20abbbddb301d52
 {{ status_code }} {{ status_text }}
 
 */
-", "@Twig/Exception/error.css.twig", "/home/coly/Documents/SendMoney/vendor/symfony/twig-bundle/Resources/views/Exception/error.css.twig");
+", "@Twig/Exception/error.css.twig", "/var/www/html/SYMFONY4/Mes Projets Symfony/SendMoney/vendor/symfony/twig-bundle/Resources/views/Exception/error.css.twig");
     }
 }

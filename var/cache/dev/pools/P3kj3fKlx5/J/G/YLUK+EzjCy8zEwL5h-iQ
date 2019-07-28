@@ -1,29 +1,29 @@
-<?php return [PHP_INT_MAX, static function () {
+<?php
 
-    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-        $o = [
-            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ManyToOne'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToOne')),
-            clone ($p['Doctrine\\ORM\\Mapping\\JoinColumn'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\JoinColumn')),
-        ],
-        null,
-        [
-            'stdClass' => [
-                'targetEntity' => [
-                    'App\\Entity\\Partenaire',
-                ],
-                'inversedBy' => [
-                    'compteBancaires',
-                ],
-                'nullable' => [
-                    1 => false,
-                ],
+namespace Symfony\Component\VarExporter\Internal;
+
+return $getExpiry ? PHP_INT_MAX : Hydrator::hydrate(
+    $o = [
+        clone (($p = &Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ManyToOne'] ?? Registry::p('Doctrine\\ORM\\Mapping\\ManyToOne')),
+        clone ($p['Doctrine\\ORM\\Mapping\\JoinColumn'] ?? Registry::p('Doctrine\\ORM\\Mapping\\JoinColumn')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'targetEntity' => [
+                'App\\Entity\\Partenaire',
+            ],
+            'inversedBy' => [
+                'compteBancaires',
+            ],
+            'nullable' => [
+                1 => false,
             ],
         ],
-        [
-            $o[0],
-            $o[1],
-        ],
-        []
-    );
-
-}];
+    ],
+    [
+        $o[0],
+        $o[1],
+    ],
+    []
+);
