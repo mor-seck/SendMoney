@@ -389,6 +389,6 @@ class __TwigTemplate_9e5a7bb7c322da4cdb856cd91460117898a2f6e91fbf3b8a03a5c1b9806
 {% block body %}
     {% include '@Twig/Exception/exception.html.twig' %}
 {% endblock %}
-", "@Twig/Exception/exception_full.html.twig", "/var/www/html/SYMFONY4/Mes Projets Symfony/SendMoney/vendor/symfony/twig-bundle/Resources/views/Exception/exception_full.html.twig");
+", "@Twig/Exception/exception_full.html.twig", "/home/coly/Documents/SendMoney/vendor/symfony/twig-bundle/Resources/views/Exception/exception_full.html.twig");
     }
 }

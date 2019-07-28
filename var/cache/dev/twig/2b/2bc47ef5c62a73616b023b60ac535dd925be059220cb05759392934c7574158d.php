@@ -63,6 +63,6 @@ class __TwigTemplate_a7c4b32ca46e5dc5c1d26b4f88e5161f754299a72a1f807f11164e00c82
     public function getSourceContext()
     {
         return new Source("{{ include('@Twig/Exception/error.xml.twig') }}
-", "@Twig/Exception/error.rdf.twig", "/var/www/html/SYMFONY4/Mes Projets Symfony/SendMoney/vendor/symfony/twig-bundle/Resources/views/Exception/error.rdf.twig");
+", "@Twig/Exception/error.rdf.twig", "/home/coly/Documents/SendMoney/vendor/symfony/twig-bundle/Resources/views/Exception/error.rdf.twig");
     }
 }

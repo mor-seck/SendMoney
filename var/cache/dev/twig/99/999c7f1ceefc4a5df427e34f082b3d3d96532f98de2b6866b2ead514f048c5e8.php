@@ -63,6 +63,6 @@ class __TwigTemplate_6b0ec1e045dd1b3e8dfba3e6665ee02b14dbc011efcde518b1dd1b31412
     public function getSourceContext()
     {
         return new Source("{{ { 'error': { 'code': status_code, 'message': status_text } }|json_encode|raw }}
-", "@Twig/Exception/error.json.twig", "/var/www/html/SYMFONY4/Mes Projets Symfony/SendMoney/vendor/symfony/twig-bundle/Resources/views/Exception/error.json.twig");
+", "@Twig/Exception/error.json.twig", "/home/coly/Documents/SendMoney/vendor/symfony/twig-bundle/Resources/views/Exception/error.json.twig");
     }
 }

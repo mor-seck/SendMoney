@@ -57,6 +57,6 @@ class __TwigTemplate_d9e0b9902d5a95d324b610a9037b7f6b83efe12a115b12cafec0546fe56
     public function getSourceContext()
     {
         return new Source("<?php echo \$view['form']->block(\$form, 'button_widget', ['type' => isset(\$type) ? \$type : 'submit']) ?>
-", "@Framework/Form/submit_widget.html.php", "/var/www/html/SYMFONY4/Mes Projets Symfony/SendMoney/vendor/symfony/framework-bundle/Resources/views/Form/submit_widget.html.php");
+", "@Framework/Form/submit_widget.html.php", "/home/coly/Documents/SendMoney/vendor/symfony/framework-bundle/Resources/views/Form/submit_widget.html.php");
     }
 }

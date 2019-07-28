@@ -1348,6 +1348,6 @@ $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBl
         {% if form is not rootform %}</small>{% else %}</div>{% endif %}
     {%- endif %}
 {%- endblock form_errors %}
-", "foundation_5_layout.html.twig", "/var/www/html/SYMFONY4/Mes Projets Symfony/SendMoney/vendor/symfony/twig-bridge/Resources/views/Form/foundation_5_layout.html.twig");
+", "foundation_5_layout.html.twig", "/home/coly/Documents/SendMoney/vendor/symfony/twig-bridge/Resources/views/Form/foundation_5_layout.html.twig");
     }
 }
