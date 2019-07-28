@@ -10,8 +10,13 @@ return [
     [ // $staticRoutes
         '/sendmoney' => [[['_route' => 'sendmoney', '_controller' => 'App\\Controller\\SendmoneyController::index'], null, null, null, false, false, null]],
         '/ajout_personne' => [[['_route' => 'ajout_personne', '_controller' => 'App\\Controller\\SendmoneyController::ajout_personne'], null, null, null, false, false, null]],
+        '/listerpersonne' => [[['_route' => 'listerpersonne', '_controller' => 'App\\Controller\\SendmoneyController::listerPersonne'], null, ['GET' => 0], null, false, false, null]],
         '/ajout_partenaire' => [[['_route' => 'ajout_partenaire', '_controller' => 'App\\Controller\\SendmoneyController::ajoutpartenaire'], null, null, null, false, false, null]],
+        '/listerpartenaire' => [[['_route' => 'listerpartenaire', '_controller' => 'App\\Controller\\SendmoneyController::listerPartenaire'], null, ['GET' => 0], null, false, false, null]],
         '/ajout_compte_bancaire' => [[['_route' => 'ajout_compte_bancaire', '_controller' => 'App\\Controller\\SendmoneyController::ajoutcomptebancaire'], null, null, null, false, false, null]],
+        '/lister_compte_bancaire' => [[['_route' => 'lister_compte_bancaire', '_controller' => 'App\\Controller\\SendmoneyController::lister_compte_bancaire'], null, ['GET' => 0], null, false, false, null]],
+        '/ajout_depot' => [[['_route' => 'ajout_depot', '_controller' => 'App\\Controller\\SendmoneyController::ajoutdepot'], null, null, null, false, false, null]],
+        '/lister_depot' => [[['_route' => 'lister_depot', '_controller' => 'App\\Controller\\SendmoneyController::lister_depot'], null, ['GET' => 0], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
