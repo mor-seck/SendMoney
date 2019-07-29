@@ -20,10 +20,7 @@ class Depot
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $date_depot;
+    
 
     /**
      * @ORM\Column(type="bigint")
@@ -45,6 +42,11 @@ class Depot
      */
     private $compteBancaire;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date_depot;
+
     public function __construct()
     {
         $this->compteBancaires = new ArrayCollection();
@@ -55,18 +57,7 @@ class Depot
         return $this->id;
     }
 
-    public function getDateDepot(): ?\DateTimeInterface
-    {
-        return $this->date_depot;
-    }
-
-    public function setDateDepot(\DateTimeInterface $date_depot): self
-    {
-        $this->date_depot = $date_depot;
-
-        return $this;
-    }
-
+  
     public function getMontant(): ?int
     {
         return $this->montant;
@@ -130,6 +121,18 @@ class Depot
     public function setCompteBancaire(?CompteBancaire $compteBancaire): self
     {
         $this->compteBancaire = $compteBancaire;
+
+        return $this;
+    }
+
+    public function getDateDepot(): ?\DateTimeInterface
+    {
+        return $this->date_depot;
+    }
+
+    public function setDateDepot(\DateTimeInterface $date_depot): self
+    {
+        $this->date_depot = $date_depot;
 
         return $this;
     }

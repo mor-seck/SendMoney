@@ -1,5 +1,6 @@
 
 ###> symfony/framework-bundle ###
+/.env
 /.env.local
 /.env.local.php
 /.env.*.local
@@ -12,6 +13,14 @@
 /.web-server-pid
 ###< symfony/web-server-bundle ###
 
+<<<<<<< HEAD
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+=======
 ###> lexik/jwt-authentication-bundle ###
 /config/jwt/*.pem
 ###< lexik/jwt-authentication-bundle ###
+>>>>>>> 22dc5081b60e403a6b1f21717f59d38d5b45acbe
