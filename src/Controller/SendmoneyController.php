@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Controller;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
@@ -23,7 +21,7 @@ use App\Entity\Depot;
 use App\Entity\Type;
 use App\Entity\User;
 use Symfony\Component\Serializer\SerializerInterface;
-
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 class SendmoneyController extends AbstractController
 {
     /**
@@ -35,7 +33,6 @@ class SendmoneyController extends AbstractController
             'controller_name' => 'SendmoneyController',
         ]);
     }
-
     /**
      * @Route("/ajout_personne", name="ajout_personne")
      */
@@ -58,12 +55,10 @@ class SendmoneyController extends AbstractController
         $personne->setEmail($valeur->email);
         $personne->setType($type);
         $personne->setUser($user);
-
         $entityManager->persist($personne);
         $entityManager->flush();
         return new Response('Cette Personne a été ajouté');
     }
-
     /**
      * @Route("/lister_personne", name="lister_personne",methods={"GET"})
      */
@@ -73,8 +68,6 @@ class SendmoneyController extends AbstractController
         $data            = $serializer->serialize($PersonneRepository, 'json');
         return new Response($data, 200, []);
     }
-
-
     //=========================>ICI LE CODE QUI ME PERMET D'AJOUTER UN PARTENAIRE
     /**
      * @Route("/ajout_partenaire", name="ajout_partenaire")
@@ -86,9 +79,10 @@ class SendmoneyController extends AbstractController
         $personneRepo  = $this->getDoctrine()->getRepository(Personne::class);
         $personne      = $personneRepo->find($valeur->personne);
         $partenaire    = new Partenaire();
+        $partenaire->setPersonne($personne);
         $partenaire->setRaisonSociale($valeur->raison_sociale);
         $partenaire->setNinea($valeur->ninea);
-        $partenaire->setPersonne($personne);
+        $partenaire->setStatus($valeur->status);
         $entityManager->persist($partenaire);
         $entityManager->flush();
         return new Response("le partenaire a été ajouté avec success");
@@ -122,12 +116,10 @@ class SendmoneyController extends AbstractController
 
         $compte_bancaire->setPartenaire($partenaire);
         $compte_bancaire->setNumeroCompte($valeur->numero_compte);
-
         $entityManager->persist($compte_bancaire);
         $entityManager->flush();
         return new Response("le compte a été ajouté avec success");
     }
-
     /**
      * @Route("/lister_compte_bancaire", name="lister_compte_bancaire",methods={"GET"})
      */
@@ -161,7 +153,6 @@ class SendmoneyController extends AbstractController
         $entityManager->flush();
         return new Response("Votre depot a été ajouté avec success");
     }
-
     /**
      * @Route("/lister_depot", name="lister_depot",methods={"GET"})
      */
@@ -171,7 +162,6 @@ class SendmoneyController extends AbstractController
         $data            = $serializer->serialize($DepotRepository, 'json');
         return new Response($data, 200, []);
     }
-
     /**
      * @Route("/ajout_Type", name="ajout_type")
      */
@@ -185,7 +175,6 @@ class SendmoneyController extends AbstractController
         $entityManager->flush();
         return new Response('Le type a été ajouté');
     }
-
     /**
      * @Route("/ajout_user", name="ajout_user")
      */
@@ -211,5 +200,63 @@ class SendmoneyController extends AbstractController
         return new Response($data, 200, []);
     }
 
-   
+    /**
+     * @Route("/type/{id}", name="update_type", methods={"PUT"})
+     */
+    public function updatetype(Request $request, SerializerInterface $serializer, Type $type, ValidatorInterface $validator, EntityManagerInterface $entityManager)
+    {
+        $typeUpdate = $entityManager->getRepository(Type::class)->find($type->getId());
+        $data = json_decode($request->getContent());
+        foreach ($data as $key => $value) {
+            if ($key && !empty($value)) {
+                $name = ucfirst($key);
+                $setter = 'set' . $name;
+                $typeUpdate->$setter($value);
+            }
+        }
+        $errors = $validator->validate($typeUpdate);
+        if (count($errors)) {
+            $errors = $serializer->serialize($errors, 'json');
+            return new Response($errors, 500, [
+                'Content-Type' => 'application/json'
+            ]);
+        }
+        $entityManager->flush();
+        $data = [
+            'status' => 200,
+            'message' => 'Le téléphone a bien été mis à jour'
+        ];
+        return new JsonResponse($data);
+    }
+
+
+    /**
+     * @Route("/depot/{id}", name="update_depo", methods={"PUT"})
+     */
+    public function updatedepot(Request $request, SerializerInterface $serializer, Depot $depot, ValidatorInterface $validator, EntityManagerInterface $entityManager)
+    {
+        $depotUpdate = $entityManager->getRepository(Depot::class)->find($depot->getId());
+        $data = json_decode($request->getContent());
+        foreach ($data as $key => $value) {
+            if ($key && !empty($value)) {
+                $name = ucfirst($key);
+                $setter = 'set' . $name;
+                $depotUpdate->$setter($value+ $depot->getMontant());
+            }
+        }
+        $errors = $validator->validate($depotUpdate);
+        if (count($errors)) {
+            $errors = $serializer->serialize($errors, 'json');
+            return new Response($errors, 500, [
+                'Content-Type' => 'application/json'
+            ]);
+        }
+        $entityManager->flush();
+        $data = [
+            'status' => 200,
+            'message' => 'Le téléphone a bien été mis à jour'
+        ];
+        return new JsonResponse($data);
+    }
+
 }
