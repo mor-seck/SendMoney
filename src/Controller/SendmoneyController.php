@@ -21,6 +21,11 @@ use App\Repository\CompteBancaireRepository;
 use App\Repository\TypeRepository;
 use App\Repository\DepotRepository;
 use App\Repository\UserRepository;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> a0435ad260804d14581692e55ca3425d539bff2b
 class SendmoneyController extends AbstractController
 {
     /**
@@ -51,10 +56,18 @@ class SendmoneyController extends AbstractController
         $personne->setEmail($valeur->email);
         $personne->setType($type);
         $personne->setUser($user);
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0435ad260804d14581692e55ca3425d539bff2b
         $entityManager->persist($personne);
         $entityManager->flush();
         return new Response('Cette Personne a été ajouté');
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0435ad260804d14581692e55ca3425d539bff2b
     /**
      * @Route("/listerpersonne", name="listerpersonne",methods={"GET"})
      */
@@ -66,6 +79,10 @@ class SendmoneyController extends AbstractController
             'Content-Type' => 'application/json'
         ]);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0435ad260804d14581692e55ca3425d539bff2b
     //=========================>ICI LE CODE QUI ME PERMET D'AJOUTER UN PARTENAIRE
     /**
      * @Route("/ajout_partenaire", name="ajout_partenaire")
@@ -84,6 +101,11 @@ class SendmoneyController extends AbstractController
         $entityManager->flush();
         return new Response("le partenaire a été ajouté avec success");
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> a0435ad260804d14581692e55ca3425d539bff2b
     /**
      * @Route("/listerpartenaire", name="listerpartenaire",methods={"GET"})
      */
@@ -93,6 +115,11 @@ class SendmoneyController extends AbstractController
         $data       = $serializer->serialize($partenaire, 'json');
         return new Response($data, 200, []);
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> a0435ad260804d14581692e55ca3425d539bff2b
     //=========================>ICI LE CODE QUI ME PERMET D'AJOUTER UN COMPTE BANCAIRE
     /**
      * @Route("/ajout_compte_bancaire", name="ajout_compte_bancaire")
@@ -101,15 +128,28 @@ class SendmoneyController extends AbstractController
     {
         $valeur          = json_decode($request->getContent());
         $entityManager   = $this->getDoctrine()->getManager();
+<<<<<<< HEAD
         $partenaireRepo  = $this->getDoctrine()->getRepository(Partenaire::class);
         $partenaire      = $partenaireRepo->find($valeur->partenaire);
         $compte_bancaire = new CompteBancaire();
+=======
+
+        $partenaireRepo  = $this->getDoctrine()->getRepository(Partenaire::class);
+        $partenaire      = $partenaireRepo->find($valeur->partenaire);
+
+        $compte_bancaire = new CompteBancaire();
+
+>>>>>>> a0435ad260804d14581692e55ca3425d539bff2b
         $compte_bancaire->setPartenaire($partenaire);
         $compte_bancaire->setNumeroCompte($valeur->numero_compte);
         $entityManager->persist($compte_bancaire);
         $entityManager->flush();
         return new Response("le compte a été ajouté avec success");
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0435ad260804d14581692e55ca3425d539bff2b
     /**
      * @Route("/lister_compte_bancaire", name="lister_compte_bancaire",methods={"GET"})
      */
@@ -127,10 +167,20 @@ class SendmoneyController extends AbstractController
     {
         $valeur          = json_decode($request->getContent());
         $entityManager   = $this->getDoctrine()->getManager();
+<<<<<<< HEAD
         $personneRepo    = $this->getDoctrine()->getRepository(Personne      ::class);
         $personne        = $personneRepo->find($valeur->personne);
         $compteRepo      = $this->getDoctrine()->getRepository(CompteBancaire::class);
         $compte_bancaire = $compteRepo->find($valeur->compte_bancaire);
+=======
+
+        $personneRepo    = $this->getDoctrine()->getRepository(Personne      ::class);
+        $personne        = $personneRepo->find($valeur->personne);
+
+        $compteRepo      = $this->getDoctrine()->getRepository(CompteBancaire::class);
+        $compte_bancaire = $compteRepo->find($valeur->compte_bancaire);
+
+>>>>>>> a0435ad260804d14581692e55ca3425d539bff2b
         $depot           = new Depot();
         $depot->setPersonne($personne);
         $depot->setMontant($valeur->montant);
@@ -140,6 +190,10 @@ class SendmoneyController extends AbstractController
         $entityManager->flush();
         return new Response("Votre depot a été ajouté avec success");
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0435ad260804d14581692e55ca3425d539bff2b
     /**
      * @Route("/lister_depot", name="lister_depot",methods={"GET"})
      */
@@ -149,6 +203,10 @@ class SendmoneyController extends AbstractController
         $data = $serializer->serialize($DepotRepository, 'json');
         return new Response($data, 200, []);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0435ad260804d14581692e55ca3425d539bff2b
     /**
      * @Route("/ajout_Type", name="ajout_type")
      */
@@ -162,6 +220,10 @@ class SendmoneyController extends AbstractController
         $entityManager->flush();
         return new Response('Le type a été ajouté');
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0435ad260804d14581692e55ca3425d539bff2b
     /**
      * @Route("/ajout_user", name="ajout_user")
      */
@@ -176,4 +238,8 @@ class SendmoneyController extends AbstractController
         $entityManager->flush();
         return new Response('Le type a été ajouté');
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a0435ad260804d14581692e55ca3425d539bff2b
