@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Controller;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
@@ -35,7 +33,6 @@ class SendmoneyController extends AbstractController
             'controller_name' => 'SendmoneyController',
         ]);
     }
-
     /**
      * @Route("/ajout_personne", name="ajout_personne")
      */
@@ -58,12 +55,10 @@ class SendmoneyController extends AbstractController
         $personne->setEmail($valeur->email);
         $personne->setType($type);
         $personne->setUser($user);
-
         $entityManager->persist($personne);
         $entityManager->flush();
         return new Response('Cette Personne a été ajouté');
     }
-
     /**
      * @Route("/lister_personne", name="lister_personne",methods={"GET"})
      */
@@ -73,8 +68,6 @@ class SendmoneyController extends AbstractController
         $data            = $serializer->serialize($PersonneRepository, 'json');
         return new Response($data, 200, []);
     }
-
-
     //=========================>ICI LE CODE QUI ME PERMET D'AJOUTER UN PARTENAIRE
     /**
      * @Route("/ajout_partenaire", name="ajout_partenaire")
@@ -122,12 +115,10 @@ class SendmoneyController extends AbstractController
 
         $compte_bancaire->setPartenaire($partenaire);
         $compte_bancaire->setNumeroCompte($valeur->numero_compte);
-
         $entityManager->persist($compte_bancaire);
         $entityManager->flush();
         return new Response("le compte a été ajouté avec success");
     }
-
     /**
      * @Route("/lister_compte_bancaire", name="lister_compte_bancaire",methods={"GET"})
      */
@@ -161,7 +152,6 @@ class SendmoneyController extends AbstractController
         $entityManager->flush();
         return new Response("Votre depot a été ajouté avec success");
     }
-
     /**
      * @Route("/lister_depot", name="lister_depot",methods={"GET"})
      */
@@ -171,7 +161,6 @@ class SendmoneyController extends AbstractController
         $data            = $serializer->serialize($DepotRepository, 'json');
         return new Response($data, 200, []);
     }
-
     /**
      * @Route("/ajout_Type", name="ajout_type")
      */
@@ -185,7 +174,6 @@ class SendmoneyController extends AbstractController
         $entityManager->flush();
         return new Response('Le type a été ajouté');
     }
-
     /**
      * @Route("/ajout_user", name="ajout_user")
      */

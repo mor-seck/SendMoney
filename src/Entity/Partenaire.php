@@ -41,6 +41,11 @@ class Partenaire
      */
     private $compteBancaires;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $status;
+
     public function __construct()
     {
         $this->compteBancaires = new ArrayCollection();
@@ -114,6 +119,18 @@ class Partenaire
                 $compteBancaire->setPartenaire(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }
