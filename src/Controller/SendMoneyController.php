@@ -5,15 +5,15 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class SecurityController extends AbstractController
+class SendMoneyController extends AbstractController
 {
     /**
-     * @Route("/security", name="security")
+     * @Route("/send/money", name="send_money")
      */
     public function index()
     {
-        return $this->render('security/index.html.twig', [
-            'controller_name' => 'SecurityController',
+        return $this->render('send_money/index.html.twig', [
+            'controller_name' => 'SendMoneyController',
         ]);
     }
 }

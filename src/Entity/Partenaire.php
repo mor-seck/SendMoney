@@ -23,7 +23,7 @@ class Partenaire
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $raison_sociale;
+    private $raisonsociale;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -31,24 +31,23 @@ class Partenaire
     private $ninea;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Personne", inversedBy="partenaires")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $personne;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\CompteBancaire", mappedBy="partenaire")
-     */
-    private $compteBancaires;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
-    private $status;
+    private $statut;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="partenaires")
+     */
+    private $user;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Compte", mappedBy="partenaire")
+     */
+    private $comptes;
 
     public function __construct()
     {
-        $this->compteBancaires = new ArrayCollection();
+        $this->comptes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -56,14 +55,14 @@ class Partenaire
         return $this->id;
     }
 
-    public function getRaisonSociale(): ?string
+    public function getRaisonsociale(): ?string
     {
-        return $this->raison_sociale;
+        return $this->raisonsociale;
     }
 
-    public function setRaisonSociale(string $raison_sociale): self
+    public function setRaisonsociale(string $raisonsociale): self
     {
-        $this->raison_sociale = $raison_sociale;
+        $this->raisonsociale = $raisonsociale;
 
         return $this;
     }
@@ -80,57 +79,57 @@ class Partenaire
         return $this;
     }
 
-    public function getPersonne(): ?Personne
+    public function getStatut(): ?string
     {
-        return $this->personne;
+        return $this->statut;
     }
 
-    public function setPersonne(?Personne $personne): self
+    public function setStatut(string $statut): self
     {
-        $this->personne = $personne;
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * @return Collection|CompteBancaire[]
+     * @return Collection|Compte[]
      */
-    public function getCompteBancaires(): Collection
+    public function getComptes(): Collection
     {
-        return $this->compteBancaires;
+        return $this->comptes;
     }
 
-    public function addCompteBancaire(CompteBancaire $compteBancaire): self
+    public function addCompte(Compte $compte): self
     {
-        if (!$this->compteBancaires->contains($compteBancaire)) {
-            $this->compteBancaires[] = $compteBancaire;
-            $compteBancaire->setPartenaire($this);
+        if (!$this->comptes->contains($compte)) {
+            $this->comptes[] = $compte;
+            $compte->setPartenaire($this);
         }
 
         return $this;
     }
 
-    public function removeCompteBancaire(CompteBancaire $compteBancaire): self
+    public function removeCompte(Compte $compte): self
     {
-        if ($this->compteBancaires->contains($compteBancaire)) {
-            $this->compteBancaires->removeElement($compteBancaire);
+        if ($this->comptes->contains($compte)) {
+            $this->comptes->removeElement($compte);
             // set the owning side to null (unless already changed)
-            if ($compteBancaire->getPartenaire() === $this) {
-                $compteBancaire->setPartenaire(null);
+            if ($compte->getPartenaire() === $this) {
+                $compte->setPartenaire(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getStatus(): ?string
-    {
-        return $this->status;
-    }
-
-    public function setStatus(string $status): self
-    {
-        $this->status = $status;
 
         return $this;
     }

@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\CompteBancaire;
+use App\Entity\Compte;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method CompteBancaire|null find($id, $lockMode = null, $lockVersion = null)
- * @method CompteBancaire|null findOneBy(array $criteria, array $orderBy = null)
- * @method CompteBancaire[]    findAll()
- * @method CompteBancaire[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Compte|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Compte|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Compte[]    findAll()
+ * @method Compte[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CompteBancaireRepository extends ServiceEntityRepository
+class CompteRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, CompteBancaire::class);
+        parent::__construct($registry, Compte::class);
     }
 
     // /**
-    //  * @return CompteBancaire[] Returns an array of CompteBancaire objects
+    //  * @return Compte[] Returns an array of Compte objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class CompteBancaireRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?CompteBancaire
+    public function findOneBySomeField($value): ?Compte
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')

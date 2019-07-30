@@ -20,7 +20,10 @@ class Depot
      */
     private $id;
 
-    
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="depots")
+     */
+    private $user;
 
     /**
      * @ORM\Column(type="bigint")
@@ -28,28 +31,18 @@ class Depot
     private $montant;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Personne", inversedBy="depots")
-     */
-    private $personne;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\CompteBancaire", mappedBy="depot")
-     */
-    private $compteBancaires;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\CompteBancaire", inversedBy="depot")
-     */
-    private $compteBancaire;
-
-    /**
      * @ORM\Column(type="date")
      */
     private $date_depot;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Compte", mappedBy="depot")
+     */
+    private $comptes;
+
     public function __construct()
     {
-        $this->compteBancaires = new ArrayCollection();
+        $this->comptes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -57,7 +50,18 @@ class Depot
         return $this->id;
     }
 
-  
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
     public function getMontant(): ?int
     {
         return $this->montant;
@@ -70,61 +74,6 @@ class Depot
         return $this;
     }
 
-    public function getPersonne(): ?Personne
-    {
-        return $this->personne;
-    }
-
-    public function setPersonne(?Personne $personne): self
-    {
-        $this->personne = $personne;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|CompteBancaire[]
-     */
-    public function getCompteBancaires(): Collection
-    {
-        return $this->compteBancaires;
-    }
-
-    public function addCompteBancaire(CompteBancaire $compteBancaire): self
-    {
-        if (!$this->compteBancaires->contains($compteBancaire)) {
-            $this->compteBancaires[] = $compteBancaire;
-            $compteBancaire->setDepot($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCompteBancaire(CompteBancaire $compteBancaire): self
-    {
-        if ($this->compteBancaires->contains($compteBancaire)) {
-            $this->compteBancaires->removeElement($compteBancaire);
-            // set the owning side to null (unless already changed)
-            if ($compteBancaire->getDepot() === $this) {
-                $compteBancaire->setDepot(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getCompteBancaire(): ?CompteBancaire
-    {
-        return $this->compteBancaire;
-    }
-
-    public function setCompteBancaire(?CompteBancaire $compteBancaire): self
-    {
-        $this->compteBancaire = $compteBancaire;
-
-        return $this;
-    }
-
     public function getDateDepot(): ?\DateTimeInterface
     {
         return $this->date_depot;
@@ -133,6 +82,37 @@ class Depot
     public function setDateDepot(\DateTimeInterface $date_depot): self
     {
         $this->date_depot = $date_depot;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Compte[]
+     */
+    public function getComptes(): Collection
+    {
+        return $this->comptes;
+    }
+
+    public function addCompte(Compte $compte): self
+    {
+        if (!$this->comptes->contains($compte)) {
+            $this->comptes[] = $compte;
+            $compte->setDepot($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCompte(Compte $compte): self
+    {
+        if ($this->comptes->contains($compte)) {
+            $this->comptes->removeElement($compte);
+            // set the owning side to null (unless already changed)
+            if ($compte->getDepot() === $this) {
+                $compte->setDepot(null);
+            }
+        }
 
         return $this;
     }
