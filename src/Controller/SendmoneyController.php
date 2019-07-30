@@ -23,7 +23,7 @@ use App\Entity\Depot;
 use App\Entity\Type;
 use App\Entity\User;
 use Symfony\Component\Serializer\SerializerInterface;
-
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 class SendmoneyController extends AbstractController
 {
     /**
@@ -211,5 +211,63 @@ class SendmoneyController extends AbstractController
         return new Response($data, 200, []);
     }
 
-   
+    /**
+     * @Route("/type/{id}", name="update_type", methods={"PUT"})
+     */
+    public function updatetype(Request $request, SerializerInterface $serializer, Type $type, ValidatorInterface $validator, EntityManagerInterface $entityManager)
+    {
+        $typeUpdate = $entityManager->getRepository(Type::class)->find($type->getId());
+        $data = json_decode($request->getContent());
+        foreach ($data as $key => $value) {
+            if ($key && !empty($value)) {
+                $name = ucfirst($key);
+                $setter = 'set' . $name;
+                $typeUpdate->$setter($value);
+            }
+        }
+        $errors = $validator->validate($typeUpdate);
+        if (count($errors)) {
+            $errors = $serializer->serialize($errors, 'json');
+            return new Response($errors, 500, [
+                'Content-Type' => 'application/json'
+            ]);
+        }
+        $entityManager->flush();
+        $data = [
+            'status' => 200,
+            'message' => 'Le téléphone a bien été mis à jour'
+        ];
+        return new JsonResponse($data);
+    }
+
+
+    /**
+     * @Route("/depot/{id}", name="update_depo", methods={"PUT"})
+     */
+    public function updatedepot(Request $request, SerializerInterface $serializer, Depot $depot, ValidatorInterface $validator, EntityManagerInterface $entityManager)
+    {
+        $depotUpdate = $entityManager->getRepository(Depot::class)->find($depot->getId());
+        $data = json_decode($request->getContent());
+        foreach ($data as $key => $value) {
+            if ($key && !empty($value)) {
+                $name = ucfirst($key);
+                $setter = 'set' . $name;
+                $depotUpdate->$setter($value+ $depot->getMontant());
+            }
+        }
+        $errors = $validator->validate($depotUpdate);
+        if (count($errors)) {
+            $errors = $serializer->serialize($errors, 'json');
+            return new Response($errors, 500, [
+                'Content-Type' => 'application/json'
+            ]);
+        }
+        $entityManager->flush();
+        $data = [
+            'status' => 200,
+            'message' => 'Le téléphone a bien été mis à jour'
+        ];
+        return new JsonResponse($data);
+    }
+
 }
