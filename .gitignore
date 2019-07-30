@@ -12,16 +12,11 @@
 /.web-server-pid
 ###< symfony/web-server-bundle ###
 
-<<<<<<< HEAD
-###> symfony/phpunit-bridge ###
-.phpunit
-.phpunit.result.cache
-/phpunit.xml
-###< symfony/phpunit-bridge ###
-=======
 ###> lexik/jwt-authentication-bundle ###
 /config/jwt/*.pem
 ###< lexik/jwt-authentication-bundle ###
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 
 ###> symfony/phpunit-bridge ###
@@ -32,3 +27,4 @@
 =======
 >>>>>>> 22dc5081b60e403a6b1f21717f59d38d5b45acbe
 >>>>>>> a0435ad260804d14581692e55ca3425d539bff2b
+>>>>>>> 58bab84b3b675722fd857558bb241ca7fc19c25c
